@@ -69,10 +69,9 @@ int main() {
     MatrixXd U = svd.matrixU();
     MatrixXd V = svd.matrixV().transpose();
 
-    //Reconstruct
+    // Reconstruct
     double t = 0.1;
     int k = svd.singularValues().rows() * t; 
-
     MatrixXd S = MatrixXd::Zero(k, k);
     MatrixXd U_img = MatrixXd::Zero(U.rows(), k);
     MatrixXd V_img = MatrixXd::Zero(k, V.cols());
@@ -94,11 +93,10 @@ int main() {
             }
         }
     }
-    stbi_write_png("output_test.png", width, height, 3, reconstructed_image, width * 3);
+    string output = "output_test.png";
+    stbi_write_png(output.c_str(), width, height, 3, reconstructed_image, width * 3);
     return 0;
 }
-
-
 
 
 
